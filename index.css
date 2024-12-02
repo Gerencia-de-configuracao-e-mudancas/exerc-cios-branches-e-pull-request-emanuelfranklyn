@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #111;
+    place-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    --note-size: 2.5rem;
+    --spacing: 0.15rem;
+}
+
+#pianoContainer {
+    background: #777;
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+#keypad {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.Note {
+    aspect-ratio: 1/5;
+    width: var(--note-size);
+    height: auto;
+    border: 0;
+    margin-left: var(--spacing);
+    border-radius: var(--spacing);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.Note:nth-child(1) {
+    margin: 0;
+}
+
+.semi-Note {
+    border: 0;
+    width: calc(var(--note-size) / 1.5);
+    aspect-ratio: 1/5;
+    height: fit-content;
+    color: white;
+    margin-left: calc((0px - (var(--note-size) / 1.5)) + (var(--spacing) / 5) );
+    isolation: isolate;
+    z-index: 1;
+    background: #000;
+    transform: translateX(50%);
+}
+
+.semi-Note::before {
+    display: inline-block;
+    content: '';
+    z-index: -1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Note:active, .semi-Note:active::before {
+    background: red;
+}
